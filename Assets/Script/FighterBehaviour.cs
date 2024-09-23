@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FighterBehaviour : MonoBehaviour
 {
-    private float mv_speed = 20f;
+    private float _mv_speed = 20f;
 
-    private float shoot_speed = 20f;
+    private float _shoot_speed = 20f;
 
-    private float shoot_delay = 0.5f;
+    private float _shoot_delay = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +22,12 @@ public class FighterBehaviour : MonoBehaviour
         // Shoot
         if (Input.GetKey(KeyCode.Space))
         {
-            if (Time.time - shoot_delay <= 0.1f)
+            if (Time.time - _shoot_delay <= 0.1f)
             {
               return;
             }
 
-            shoot_delay = Time.time;
+            _shoot_delay = Time.time;
 
             var bullet = gameObject.transform.Find("Bullet").gameObject;
             var newBullet = GameObject.Instantiate(bullet);
@@ -39,11 +37,11 @@ public class FighterBehaviour : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.LeftShift)) {
-            mv_speed = 40f;
+            _mv_speed = 40f;
         }
         else
         {
-            mv_speed = 20f;
+            _mv_speed = 20f;
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -62,7 +60,7 @@ public class FighterBehaviour : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            gameObject.transform.Translate(Vector3.up * mv_speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.up * _mv_speed * Time.deltaTime);
 
             if (gameObject.transform.position.y > 20f)
             {
@@ -72,7 +70,7 @@ public class FighterBehaviour : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            gameObject.transform.Translate(Vector3.down * mv_speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.down * _mv_speed * Time.deltaTime);
 
             if (gameObject.transform.position.y < -20f)
             {
@@ -82,7 +80,7 @@ public class FighterBehaviour : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A))
         {
-            gameObject.transform.Translate(Vector3.left * mv_speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.left * _mv_speed * Time.deltaTime);
 
             if (gameObject.transform.position.x < -10f)
             {
@@ -92,7 +90,7 @@ public class FighterBehaviour : MonoBehaviour
 
         if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.Translate(Vector3.right * mv_speed * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.right * _mv_speed * Time.deltaTime);
 
             if (gameObject.transform.position.x > 10f)
             {
